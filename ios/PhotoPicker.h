@@ -14,6 +14,6 @@
 
 @property PhotoPickerDelegate * _Nullable delegate;
 
-- (void)choosePhotoWithOptions:(nonnull NSDictionary *)options callback:(nonnull RCTResponseSenderBlock)callback;
+- (void)pickPhoto:(nonnull RCTResponseSenderBlock)callback;
 
 @end

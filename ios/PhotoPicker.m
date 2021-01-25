@@ -8,7 +8,7 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(choosePhotoWithOptions:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(pickPhoto:(RCTResponseSenderBlock)callback)
 {
     if (@available(iOS 14, *)) {
         dispatch_async(dispatch_get_main_queue(), ^{

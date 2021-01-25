@@ -1,17 +1,15 @@
 # react-native-photo-picker
 
-## Getting started
-
-`$ npm install react-native-photo-picker --save`
-
-### Mostly automatic installation
-
-`$ react-native link react-native-photo-picker`
+React Native wrapper for [PHPickerViewController](https://developer.apple.com/documentation/photokit/phpickerviewcontroller)
 
 ## Usage
-```javascript
-import PhotoPicker from 'react-native-photo-picker';
 
-// TODO: What to do with the module?
-PhotoPicker;
+```javascript
+import { pickPhoto } from 'react-native-photo-picker';
+
+pickPhoto((err, photoURL) => {
+    // photoURL contains the URL to the selected photo, or null if
+    // the user canceled
+})
 ```
+

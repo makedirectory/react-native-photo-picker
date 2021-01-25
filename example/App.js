@@ -38,7 +38,7 @@ export default class App extends Component {
   }
 
   choosePhoto = () => {
-    PhotoPicker.choosePhotoWithOptions({}, (error, imageURL) => {
+    PhotoPicker.pickPhoto((error, imageURL) => {
       console.warn({error, imageURL});
       this.setState({
         status: 'native callback received',
