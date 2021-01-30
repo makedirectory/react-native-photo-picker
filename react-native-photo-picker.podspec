@@ -6,7 +6,8 @@ Pod::Spec.new do |s|
   s.name         = "react-native-photo-picker"
   s.version      = package["version"]
   s.summary      = package["description"]
-  s.description  = "react-native-photo-picker"
+  s.description  = package["description"]
+  s.authors      = { 'Wilson Gramer' => 'wilson@mk-dir.com' }
   s.homepage     = "https://github.com/makedirectory/react-native-photo-picker"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.platforms    = { :ios => "9.0" }
