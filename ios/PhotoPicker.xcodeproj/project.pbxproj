@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C8F68A1D25BE2CE70021169C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F68A1C25BE2CE70021169C /* PhotoPicker.swift */; };
+		C812FB1825C4CA35002ABA57 /* PhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C812FB1725C4CA35002ABA57 /* PhotoPicker.m */; };
+		C812FB1F25C4CCC6002ABA57 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C812FB1E25C4CCC6002ABA57 /* UIImage+Resize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,9 +25,10 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libPhotoPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhotoPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C812FB1725C4CA35002ABA57 /* PhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPicker.m; sourceTree = "<group>"; };
+		C812FB1E25C4CCC6002ABA57 /* UIImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		C812FB7D25C4D99D002ABA57 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		C8F68A1725BE2A3E0021169C /* PhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPicker.h; sourceTree = "<group>"; };
-		C8F68A1B25BE2CE70021169C /* PhotoPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoPicker-Bridging-Header.h"; sourceTree = "<group>"; };
-		C8F68A1C25BE2CE70021169C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +53,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				C8F68A1B25BE2CE70021169C /* PhotoPicker-Bridging-Header.h */,
+				C812FB7D25C4D99D002ABA57 /* UIImage+Resize.h */,
+				C812FB1E25C4CCC6002ABA57 /* UIImage+Resize.m */,
 				C8F68A1725BE2A3E0021169C /* PhotoPicker.h */,
-				C8F68A1C25BE2CE70021169C /* PhotoPicker.swift */,
+				C812FB1725C4CA35002ABA57 /* PhotoPicker.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,7 +119,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8F68A1D25BE2CE70021169C /* PhotoPicker.swift in Sources */,
+				C812FB1825C4CA35002ABA57 /* PhotoPicker.m in Sources */,
+				C812FB1F25C4CCC6002ABA57 /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

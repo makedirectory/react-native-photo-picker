@@ -38,14 +38,20 @@ export default class App extends Component {
   }
 
   choosePhoto = () => {
-    PhotoPicker.pickPhoto((error, imageURL) => {
-      console.warn({error, imageURL});
-      this.setState({
-        status: 'native callback received',
-        error,
-        imageURL,
-      });
-    });
+    PhotoPicker.pickPhoto(
+      {
+        maxWidth: 10,
+        maxHeight: 10,
+      },
+      (error, imageURL) => {
+        console.warn({error, imageURL});
+        this.setState({
+          status: 'native callback received',
+          error,
+          imageURL,
+        });
+      },
+    );
   };
 }
 

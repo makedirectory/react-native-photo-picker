@@ -5,8 +5,12 @@
 @interface PhotoPickerDelegate : NSObject <PHPickerViewControllerDelegate>
 
 @property RCTResponseSenderBlock _Nonnull callback;
+@property NSNumber * _Nullable maxWidth;
+@property NSNumber * _Nullable maxHeight;
 
-- (nullable instancetype)initWithCallback:(nonnull RCTResponseSenderBlock)callback;
+- (nullable instancetype)initWithCallback:(nonnull RCTResponseSenderBlock)callback
+                                 maxWidth:(nullable NSNumber *)maxWidth
+                                maxHeight:(nullable NSNumber *)maxHeight;
 
 @end
 
@@ -14,6 +18,6 @@
 
 @property PhotoPickerDelegate * _Nullable delegate;
 
-- (void)pickPhoto:(nonnull RCTResponseSenderBlock)callback;
+- (void)pickPhoto:(nonnull NSDictionary *)options callback:(nonnull RCTResponseSenderBlock)callback;
 
 @end

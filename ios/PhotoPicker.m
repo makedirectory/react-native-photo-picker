@@ -1,4 +1,5 @@
 #import "PhotoPicker.h"
+#import "UIImage+Resize.h"
 #import <React/RCTConvert.h>
 
 @import UIKit;
@@ -8,22 +9,30 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(pickPhoto:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(pickPhoto:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback)
 {
+    NSNumber * maxWidth = [options objectForKey:@"maxWidth"];
+    NSNumber * maxHeight = [options objectForKey:@"maxHeight"];
+
     if (@available(iOS 14, *)) {
         dispatch_async(dispatch_get_main_queue(), ^{
             PHPickerConfiguration * configuration = [[PHPickerConfiguration alloc] initWithPhotoLibrary:[PHPhotoLibrary sharedPhotoLibrary]];
             configuration.filter = [PHPickerFilter imagesFilter];
             configuration.selectionLimit = 1;
 
-            self.delegate = [[PhotoPickerDelegate alloc] initWithCallback:callback];
+            self.delegate = [[PhotoPickerDelegate alloc] initWithCallback:callback
+                                                                 maxWidth:maxWidth
+                                                                maxHeight:maxHeight];
 
             PHPickerViewController * picker = [[PHPickerViewController alloc] initWithConfiguration:configuration];
             picker.delegate = self.delegate;
             picker.modalPresentationStyle = UIModalPresentationFullScreen;
 
             id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
-            [appDelegate.window.rootViewController presentViewController:picker animated:YES completion:nil];
+
+            [appDelegate.window.rootViewController presentViewController:picker
+                                                                animated:YES
+                                                              completion:nil];
         });
     } else {
         callback(@[@"Requires iOS 14", [NSNull null]]);
@@ -37,12 +46,16 @@ RCT_EXPORT_METHOD(pickPhoto:(RCTResponseSenderBlock)callback)
 
 @implementation PhotoPickerDelegate
 
-- (instancetype)initWithCallback:(RCTResponseSenderBlock)callback
+- (nullable instancetype)initWithCallback:(nonnull RCTResponseSenderBlock)callback
+                                 maxWidth:(nullable NSNumber *)maxWidth
+                                maxHeight:(nullable NSNumber *)maxHeight;
 {
     self = [super init];
 
     if (self) {
         _callback = callback;
+        _maxWidth = maxWidth;
+        _maxHeight = maxHeight;
     }
 
     return self;
@@ -76,6 +89,14 @@ RCT_EXPORT_METHOD(pickPhoto:(RCTResponseSenderBlock)callback)
             }
 
             UIImage * image = (UIImage *) object;
+
+            // Resize the image if needed
+
+            if (self.maxWidth != nil || self.maxHeight != nil) {
+                CGSize size = CGSizeMake(self.maxWidth.doubleValue, self.maxHeight.doubleValue);
+
+                image = [image imageRetainingAspectRatioWithSize:size];
+            }
 
             // Save the image to a file so it is accessible via URL
 
